@@ -22,7 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool _isEmailValid(String email) {
     String pattern =
-        r'^[^@]+@[^@]+\.[^@]+$'; // Simple regex for email validation
+        r'^[^@]+@[^@]+\.[^@]+$';
     RegExp regex = RegExp(pattern);
     return regex.hasMatch(email);
   }
