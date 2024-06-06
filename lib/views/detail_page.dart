@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:animate_do/animate_do.dart';
 import '../services/apiDataSource_service.dart';
 import '../models/detailEvent.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatefulWidget {
   final String slug, nama;
@@ -27,6 +28,7 @@ class _DetailPageState extends State<DetailPage> {
             fontFamily: 'Montserrat',
             color: Colors.white,
             fontWeight: FontWeight.bold,
+            fontSize: 11,
             letterSpacing: 2,
           ),
         ),
@@ -109,7 +111,7 @@ class _DetailPageState extends State<DetailPage> {
       case 'WIT':
         return 9;
       case 'London':
-        return 1; // During standard time (not considering daylight saving time)
+        return 1;
       default:
         return 0;
     }
@@ -134,6 +136,28 @@ class _DetailPageState extends State<DetailPage> {
                 fit: BoxFit.cover,
               ),
             ),
+          Positioned(
+            top: 10,
+            right: 10,
+            child: GestureDetector(
+              onTap: () {
+                final url =
+                    'https://api.yesplis.com/images/banner/${data.filename}';
+                launchURL(url);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.5),
+                  shape: BoxShape.circle,
+                ),
+                padding: EdgeInsets.all(8),
+                child: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
           SizedBox(height: 16.0),
           Text(
             data.nama ?? 'No Name',
@@ -212,5 +236,13 @@ class _DetailPageState extends State<DetailPage> {
         ],
       ),
     );
+  }
+
+  void launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

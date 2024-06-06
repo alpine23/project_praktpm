@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   final Map<String, double> _exchangeRates = {
     'IDR': 1,
     'MYR': 0.00029,
-    'SGD': 0.000094,
+    'SGD': 0.000083,
   };
 
   @override

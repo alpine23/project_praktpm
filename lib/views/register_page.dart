@@ -21,8 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final EncryptionService _encryptionService = EncryptionService();
 
   bool _isEmailValid(String email) {
-    String pattern =
-        r'^[^@]+@[^@]+\.[^@]+$';
+    String pattern = r'^[^@]+@[^@]+\.[^@]+$';
     RegExp regex = RegExp(pattern);
     return regex.hasMatch(email);
   }
@@ -55,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _buildHeader() {
     return Container(
-      height: 400,
+      height: 600,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/background.png'),
@@ -64,52 +63,6 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       child: Stack(
         children: <Widget>[
-          Positioned(
-            left: 30,
-            width: 80,
-            height: 200,
-            child: FadeInUp(
-              duration: Duration(seconds: 1),
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/light-1.png'),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            left: 140,
-            width: 80,
-            height: 150,
-            child: FadeInUp(
-              duration: Duration(milliseconds: 1200),
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/light-2.png'),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            right: 40,
-            top: 40,
-            width: 80,
-            height: 150,
-            child: FadeInUp(
-              duration: Duration(milliseconds: 1300),
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/clock.png'),
-                  ),
-                ),
-              ),
-            ),
-          ),
           Positioned(
             child: FadeInUp(
               duration: Duration(milliseconds: 1600),
